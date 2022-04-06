@@ -18,10 +18,8 @@ struct Graph *initialize_Graph()
 {
     int vertices, edges;
     struct Graph *G = (struct Graph *)malloc(sizeof(struct Graph));
-    printf("\n No. Of vertices: ");
-    scanf("%d", &vertices);
-    printf("\n No. Of Edges: ");
-    scanf("%d", &edges);
+    printf("\n No. Of vertices and edges: ");
+    scanf("%d%d", &vertices, &edges);
     G->vertices = vertices;
     G->edges = edges;
     G->edge = (struct Edge *)malloc(G->edges * sizeof(struct Edge));
