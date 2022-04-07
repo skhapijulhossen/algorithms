@@ -45,12 +45,15 @@ int BellManFord(struct Graph *G, int source)
     }
     distance[source] = 0;
 
-    for (int e = 0; e < G->edges - 1; e++)
+    for (int v = 0; v < G->vertices - 1; v++)
     {
-        if (distance[G->edge[e].v] > (distance[G->edge[e].u] + G->edge[e].w))
+        for (int e = 0; e < G->edges; e++)
         {
-            distance[G->edge[e].v] = distance[G->edge[e].u] + G->edge[e].w;
-            predesessor[G->edge[e].v] = G->edge[e].u;
+            if (distance[G->edge[e].v] > (distance[G->edge[e].u] + G->edge[e].w))
+            {
+                distance[G->edge[e].v] = distance[G->edge[e].u] + G->edge[e].w;
+                predesessor[G->edge[e].v] = G->edge[e].u;
+            }
         }
     }
 
