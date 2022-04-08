@@ -81,6 +81,9 @@ int BellManFord(struct Graph *G, int source)
 int main()
 {
     struct Graph *g = initialize_Graph();
-    BellManFord(g, 0);
+    int source;
+    printf("\n Source: ");
+    scanf("%d", &source);
+    BellManFord(g, source);
     return 0;
 }
