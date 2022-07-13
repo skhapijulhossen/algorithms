@@ -1,59 +1,80 @@
-#include <stdio.h>
-#include <conio.h>
+#include <iostream>
 
-int divide(int array[], int left, int right)
+class Quick
 {
-    int pivot = array[left];
-    int l = left, r = right;
-    while (l < r)
+public:
+    int len;
+    int *arr;
+    Quick(int len, int arr[])
     {
-        while (array[l] >= pivot)
+        this->len = len;
+        this->arr = new int[len];
+        for (int idx = 0; idx < len; ++idx)
         {
-            ++l;
+            this->arr[idx] = arr[idx];
         }
-        while (array[r] <= pivot)
+    }
+
+    void swap(int idx, int idy)
+    {
+        this->arr[idx] = this->arr[idx] + this->arr[idy];
+        this->arr[idy] = this->arr[idx] - this->arr[idy];
+        this->arr[idx] = this->arr[idx] - this->arr[idy];
+    }
+
+    int divide(int left, int right)
+    {
+        int pivot = this->arr[left];
+        int l = left, r = right;
+        while (l < r)
         {
-            --r;
+            while (this->arr[l] <= pivot)
+            {
+                ++l;
+            }
+            while (this->arr[r] > pivot)
+            {
+                --r;
+            }
+            if (l < r)
+            {
+                swap(l, r);
+            }
         }
-        if (l < r)
-        {
-            array[l] = array[l] + array[r];
-            array[r] = array[l] - array[r];
-            array[l] = array[l] - array[r];
-        }
-        array[left] = array[left] + array[r];
-        array[r] = array[left] - array[r];
-        array[left] = array[left] - array[r];
+        swap(left, r);
         return r;
     }
-}
 
-void QuickSort(int array[], int left, int right)
-{
-    if (left < right)
+    void QuickSort(int left, int right)
     {
-        int p = divide(array, left, right);
-        QuickSort(array, left, p);
-        QuickSort(array, p + 1, right);
+        if (left < right)
+        {
+            int p = divide(left, right);
+            QuickSort(left, p - 1);
+            QuickSort(p + 1, right);
+        }
     }
-}
+};
 
+// Main
 int main()
 {
     int i = 0, len;
-    printf("\nEnter Length Of Data: ");
-    scanf("%d", &len);
-    int array[len];
-    while (i < len && scanf("%d", &array[i]) == 1)
+    std::cout << "\nEnter Length Of Data: ";
+    std::cin >> len;
+    int arr[len];
+    while (i < len)
     {
+        std::cin >> arr[i];
         i++;
-    };
-    printf("\nAfter InsertionSort(): ");
-    QuickSort(array, 0, 5);
+    }
+    std::cout << "\nAfter InsertionSort(): ";
+    Quick sorter = Quick(len, arr);
+    sorter.QuickSort(0, len - 1);
     i = 0;
-    while (i < 5)
+    while (i < len)
     {
-        printf("%d ", array[i]);
+        std::cout << arr[i] << " ";
         i++;
     }
     return 0;
