@@ -61,6 +61,7 @@ int BellManFord(struct Graph *G, int source)
     {
         if (distance[G->edge[e].v] > (distance[G->edge[e].u] + G->edge[e].w))
         {
+            printf("Has Negetive Cycle!");
             return -1;
         }
     }
