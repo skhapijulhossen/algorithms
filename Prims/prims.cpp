@@ -36,7 +36,7 @@ void prims(int vertices)
             }
         }
         ++edges;
-        std::cout << s << "->" << d <<": "<<graph[s][d]<< std::endl;
+        std::cout << s << "->" << d << ": " << graph[s][d] << std::endl;
         selected[d] = true;
     }
 }
@@ -50,7 +50,7 @@ int main()
     {
         for (int d = 0; d < vertices; ++d)
         {
-            std::cout << "Enter Weight " << s << "->" << d << ":";
+            // std::cout << "Enter Weight " << s << "->" << d << ":";
             std::cin >> graph[s][d];
         }
     }
