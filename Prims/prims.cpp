@@ -46,11 +46,11 @@ int main()
     int vertices;
     std::cout << "\nNo Of Vertices: ";
     std::cin >> vertices;
+    std::cout << "\nEnter Weights as Matrix:";
     for (int s = 0; s < vertices; ++s)
     {
         for (int d = 0; d < vertices; ++d)
         {
-            // std::cout << "Enter Weight " << s << "->" << d << ":";
             std::cin >> graph[s][d];
         }
     }
