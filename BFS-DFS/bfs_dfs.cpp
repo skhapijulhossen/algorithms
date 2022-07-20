@@ -87,6 +87,7 @@ int main(int argc, char *argv[])
     }
     std::cout << "\nSOurce: " << std::endl;
     std::cin >> source;
+    graph.bfs(source);
     graph.dfs(source);
     return 0;
 }
