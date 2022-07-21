@@ -1,6 +1,6 @@
 #include <iostream>
 
-float fractionalKnapsack(float weight[], float profit[], float ratio[], float capacity, int items)
+float fractionalKnapsack(float weight[], float profit[], float ratio[], float capacity, int n)
 {
     int i = 0;
     float maxprofit = 0.0, part;
@@ -10,7 +10,7 @@ float fractionalKnapsack(float weight[], float profit[], float ratio[], float ca
         capacity = capacity - float(weight[i]);
         i++;
     }
-    if (i < items)
+    if (i < n)
     {
         part = capacity / weight[i];
         maxprofit = maxprofit + part * profit[i];
@@ -21,15 +21,15 @@ float fractionalKnapsack(float weight[], float profit[], float ratio[], float ca
 
 int main()
 {
-    int items;
+    int n;
     float capacity;
-    std::cout << "Items: ";
-    std::cin >> items;
+    std::cout << "n: ";
+    std::cin >> n;
     std::cout<<"\nCapacity: ";
     std::cin>>capacity;
-    float profit[items], weight[items];
-    float ratio[items];
-    for (int item = 0; item < items; item++)
+    float profit[n], weight[n];
+    float ratio[n];
+    for (int item = 0; item < n; item++)
     {
         std::cout << "\nweight profit: ";
         std::cin >> weight[item] >> profit[item];
@@ -37,9 +37,9 @@ int main()
     }
 
     // sort by ratio
-    for (int i = 0; i < items; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = i + 1; j < items; j++)
+        for (int j = i + 1; j < n; j++)
         {
             if (ratio[i] < ratio[j])
             {
@@ -57,6 +57,6 @@ int main()
             }
         }
     }
-    std::cout << "Max Profit: " << fractionalKnapsack(weight, profit, ratio, capacity, items);
+    std::cout << "Max Profit: " << fractionalKnapsack(weight, profit, ratio, capacity, n);
     return 0;
 }
