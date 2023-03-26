@@ -1,7 +1,7 @@
 
 
 def get_longest_k_distinct_subtring(s, k=2) -> int:
-    if k==0 and len(s)==0:
+    if k<2 or len(s)<=2:
         return 0
     sidx, eidx = 0, 0
     out = 0
