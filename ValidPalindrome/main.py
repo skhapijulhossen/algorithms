@@ -34,7 +34,7 @@ Constraints:
 s consists only of printable ASCII characters.
 """
 
-def isPalindrome(self, s):
+def isPalindrome(s):
     """
     :type s: str
     :rtype: bool
