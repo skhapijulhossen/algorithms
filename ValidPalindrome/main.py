@@ -34,17 +34,38 @@ Constraints:
 s consists only of printable ASCII characters.
 """
 
+
 def isPalindrome(s):
     """
     :type s: str
     :rtype: bool
     """
-    rev = ''
-    for c in s:
-        rev += c
-    if rev == s:
-        return True
-    return False
+    def validChar(c):
+        return (
+            ord('A') <= ord(c) <= ord('Z') or
+            ord('a') <= ord(c) <= ord('z') or
+            ord('0') <= ord(c) <= ord('9')
+        )
+
+    # check
+    left , right = 0, len(s) - 1
+    while left < right:
+        while left < right and not validChar(s[left]):
+            left += 1
+
+        while left < right and not validChar(s[right]):
+            right -= 1
+        
+        if s[left].lower() != s[right].lower():
+            return False
+
+        left += 1
+        right -= 1
+    return True
+
+        
+
+
 
 if __name__ == '__main__':
     s = "A man, a plan, a canal: Panama"
